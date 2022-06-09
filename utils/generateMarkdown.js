@@ -1,6 +1,12 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  if (data.license === 'None') {
+    return ''
+  } else {
+    renderLicenseLink()
+  }
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
@@ -17,6 +23,7 @@ function generateMarkdown(data) {
   //  variables inside template lierat string will be replaced with the return values from the helper functions
 
   return `# ${data.title}
+  ![badge](https://img.shields.io/badge/license-${data.license}-brightgreen)
 
   ## Description
   
@@ -43,9 +50,8 @@ function generateMarkdown(data) {
   ${data.usage}
   
   ## License
-  ![badge](https://img.shields.io/badge/license-${answers.license}-brightgreen)
-  <br />
-  This application is covered by the ${answers.license} license. 
+
+  This application is covered by the ${data.license} license. 
   
   ## How to Contribute
   ${data.contribute}
@@ -55,8 +61,8 @@ function generateMarkdown(data) {
 
   ## Any Questions?
   -Pleas contact me through:
-  GitHub:   https://github.com/${data.github}
-  Email:   ${data.email}
+  GitHub:  <a href="https://github.com/${data.github}">${data.github}</a><br>
+  Email:   <a href="mailto:${data.email}">${data.email}</a>
 
 
 `;

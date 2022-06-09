@@ -17,10 +17,10 @@ const questions = ['What is the title of the project?',
 'Choose a license'];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    const readmePageContent = generateHTML(data);
+function writeToFile(data) {
+    const generateContent = generateMarkdown(data);
 
-    fs.writeFile('README.md', readmePageContent, (err) =>
+    fs.writeFile('README.md', generateContent, (err) =>
       err ? console.log(err) : console.log('Successfully created README.md!')
     );
   };
@@ -37,7 +37,7 @@ function init() {
         .prompt([
             {
                 type: 'input',
-                name: 'name',
+                name: 'title',
                 message: questions[0],
             },
             {
@@ -92,9 +92,9 @@ function init() {
                 choices: [
                     "Apache",
                     "GNU",
-                    "ISC",
                     "MIT",
-                    "Mozilla",
+                    "Open",
+                    "None"
                 ]
             },
         ])
@@ -102,7 +102,8 @@ function init() {
     //  with passed answers from user input as input argument and
     //  store the return value to a data variable
     .then((data) => {
-        generateMarkdown(data)
+        generateMarkdown(data);
+        writeToFile(data);
     });
     // 3. Make a call to writeToFile passed file name and data as input arguments
 }
