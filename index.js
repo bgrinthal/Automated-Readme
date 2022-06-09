@@ -90,10 +90,9 @@ function init() {
                 name: 'license',
                 message: questions[10],
                 choices: [
-                    "Apache",
-                    "GNU",
+                    "Apache-2.0",
+                    "GPL-3.0",
                     "MIT",
-                    "Open",
                     "None"
                 ]
             },
