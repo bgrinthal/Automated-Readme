@@ -1,49 +1,48 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// This function returns a license badge based on which license is passed in
+// If there is no license, returns an empty string
+
 function renderLicenseBadge(license) {
-  if (data.license === 'None') {
+  if (license === 'None') {
     return ``
   } else {
     return `
-   ## License
-
-  This application is covered by the ${data.license} license. `
+  ![badge](https://img.shields.io/badge/license-${license}-brightgreen)`
   }
 }
+console.log()
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// Creates a function that returns the license link
+// If there is no license, returns an empty string
+
 function renderLicenseLink(license) {
   if (license === 'None') {
     return ``
   } else {
     return `
-    License Link:   <a href="https://choosealicense.com/licenses/${data.license}/">${data.license}</a>
+  License Link: <a href="https://choosealicense.com/licenses/${license}/">${license}</a>
      `
   }
-
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Creates a function that returns the license section of README
+// If there is no license, returns an empty string
+
 function renderLicenseSection(license) {
   if (license === 'None') {
     return ``
   } else {
     return `
-    ![badge](https://img.shields.io/badge/license-${data.license}-brightgreen)`
-  }
+  ## License
 
+  This application is covered by the ${license} license. `
+  } 
 }
 
-// TODO: Create a function to generate markdown for README
+// Creates a function to generate markdown for README
 function generateMarkdown(data) {
-  // With template literal, create README file markdown file content and return it to the caller
-  //  using template literal variables to call helper functions above
-  //  variables inside template lierat string will be replaced with the return values from the helper functions
 
   return `# ${data.title}
-  ${renderLicenseSection()}
+  ${renderLicenseBadge(data.license)}
 
   ## Description
   
@@ -69,8 +68,8 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
   
-  ${renderLicenseBadge()}
-  ${renderLicenseLink()}
+  ${renderLicenseSection(data.license)}
+  ${renderLicenseLink(data.license)}
   
   ## How to Contribute
   ${data.contribute}
@@ -79,11 +78,9 @@ function generateMarkdown(data) {
   ${data.test}
 
   ## Any Questions?
-  -Pleas contact me through:
+  -Please contact me through:
   GitHub:  <a href="https://github.com/${data.github}">${data.github}</a><br>
   Email:   <a href="mailto:${data.email}">${data.email}</a>
-
-
 `;
 }
 
